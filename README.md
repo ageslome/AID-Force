@@ -77,5 +77,13 @@ Open to collaboration with:
 - **Warmaster Agecus**  
 - **AID Force**  
 - *Let there be war — in code, in systems, and in evolution.*
+--------------
+- monthly membership levels 
+- $20 interested 
+- $200 builder 
+- $2,000 developer 
+- $20,000 enterprise / counselor 
+- $200,000 dynasty builder
+
 
 > “The Emperor Protects. The evolutionary algorithmic purity permeates from soul to all manifestations to infinity.”
