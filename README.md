@@ -79,6 +79,9 @@ Open to collaboration with:
 - *Let there be war — in code, in systems, and in evolution.*
 --------------
 - monthly membership levels 
+- tokenomics accelerater 
+- protection of currencies 
+- protection of professionals 
 
 - $20 interested 
 - Information 
