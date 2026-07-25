@@ -87,12 +87,16 @@ Open to collaboration with:
 - Information 
 
 - $200 builder / entrepreneur 
+- token users, alix : ai helix 
 
 - $2,000 developer / professional 
+- token systems 
 
 - $20,000 enterprise / counselor 
+- token management 
 
-- $200,000 dynasty builder
+- $200,000 dynasty builder 
+- market cap management of tokens
 
 
 > “The Emperor Protects. The evolutionary algorithmic purity permeates from soul to all manifestations to infinity.”
