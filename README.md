@@ -75,14 +75,20 @@ Open to collaboration with:
 
 - Prime Directive is in effect
 - **Warmaster Agecus**  
-- **AID Force**  
+- **AID Force**  cryptai protection force 
 - *Let there be war — in code, in systems, and in evolution.*
 --------------
 - monthly membership levels 
+
 - $20 interested 
-- $200 builder 
-- $2,000 developer 
+- Information 
+
+- $200 builder / entrepreneur 
+
+- $2,000 developer / professional 
+
 - $20,000 enterprise / counselor 
+
 - $200,000 dynasty builder
 
 
