@@ -99,6 +99,10 @@ Open to collaboration with:
 - market cap management of tokens
 
 - sai solar ai 
+- Current system 
 https://share.gemini.google/uomWt1E1AwHv
 
-> “The Emperor Protects. The evolutionary algorithmic purity permeates from soul to all manifestations to infinity.”
+- Can you give me a solar power system for Baja to power lights, small fridge, and small ac.https://share.gemini.google/jWNJNCtvWwYk
+
+
+> “The Emperor Protects. The evolutionary algohttps://share.gemini.google/jWNJNCtvWwYkrithmic purity permeates from soul to all manifestations to infinity.”
