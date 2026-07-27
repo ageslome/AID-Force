@@ -98,5 +98,7 @@ Open to collaboration with:
 - $200,000 dynasty builder 
 - market cap management of tokens
 
+- sai solar ai 
+https://share.gemini.google/uomWt1E1AwHv
 
 > “The Emperor Protects. The evolutionary algorithmic purity permeates from soul to all manifestations to infinity.”
