@@ -84,18 +84,23 @@ Open to collaboration with:
 - protection of professionals 
 
 - $20 interested 
+- 1 of 10,000 nft 
 - Information 
 
 - $200 builder / entrepreneur 
+- 1of1,000 nft 
 - token users, alix : ai helix 
 
 - $2,000 developer / professional 
+- 1of100 nft
 - token systems 
 
 - $20,000 enterprise / counselor 
+-1of10 nft 
 - token management 
 
 - $200,000 dynasty builder 
+- 1of1 nft
 - market cap management of tokens
 
 - sai solar ai 
