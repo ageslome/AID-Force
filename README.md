@@ -89,18 +89,22 @@ Open to collaboration with:
 
 - $200 builder / entrepreneur 
 - 1of1,000 nft 
+- tokenization package
 - token users, alix : ai helix 
 
 - $2,000 developer / professional 
-- 1of100 nft
+- 1of100 nft 
+- tokenization package
 - token systems 
 
 - $20,000 enterprise / counselor 
--1of10 nft 
+- 1of10 nft 
+- tokenization package
 - token management 
 
 - $200,000 dynasty builder 
 - 1of1 nft
+- tokenization package
 - market cap management of tokens
 
 - sai solar ai 
