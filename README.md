@@ -82,6 +82,7 @@ Open to collaboration with:
 - tokenomics accelerater 
 - protection of currencies 
 - protection of professionals 
+- panini nfts
 
 - $20 interested 
 - 1 of 10,000 nft 
@@ -122,4 +123,4 @@ https://share.gemini.google/uomWt1E1AwHv
 
 - Can you give me a solar power system for Baja to power for 4 rooms : lights, 4 small portable ac and 1 room will have a small fridge
 - $20 full document. crypto accented 
-> “The Emperor Protects. The evolutionary algohttps://share.gemini.google/jWNJNCtvWwYkrithmic purity permeates from soul to all manifestations to infinity.”
+> “The Emperor Protects. The evolutionary algo https://share.gemini.google/jWNJNCtvWwYkrithmic purity permeates from soul to all manifestations to infinity.”
