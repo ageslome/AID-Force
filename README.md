@@ -77,7 +77,9 @@ Open to collaboration with:
 - **Warmaster Agecus**  
 - **AID Force**  cryptai protection force 
 - *Let there be war — in code, in systems, and in evolution.*
---------------
+-------------- 
+https://share.gemini.google/5znIhZaD50Yx
+
 - monthly membership levels 
 - tokenomics accelerater 
 - protection of currencies 
