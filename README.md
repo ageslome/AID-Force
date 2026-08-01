@@ -84,7 +84,7 @@ https://share.gemini.google/5znIhZaD50Yx
 - tokenomics accelerater 
 - protection of currencies 
 - protection of professionals 
-- panini nfts
+- panini nfts : Sportages account 
 
 - $20 interested 
 - 1 of 10,000 nft 
