@@ -6,3 +6,6 @@ Megapolis Lithium Loop
 - Jindalee 
 - University of Nevada,  Reno 
 - Bechtel 
+- Redwood Materials 
+- Tesla 
+- Panasonic 
