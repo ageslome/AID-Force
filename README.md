@@ -10,3 +10,4 @@ Megapolis Lithium Loop
 - Tesla 
 - Panasonic 
 - American Battery Technology Company 
+- Lithium Americas
