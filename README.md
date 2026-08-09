@@ -11,3 +11,14 @@ Megapolis Lithium Loop
 - Panasonic 
 - American Battery Technology Company 
 - Lithium Americas
+-
+-
+-
+- space force
+- armed forces Command Center 
+- department of war 
+- department of energy 
+- 
+-
+-
+
