@@ -1,4 +1,4 @@
-Megapolis Lithium Loop 
+Megapolis Lithium Loop https://share.gemini.google/EnSNcUZyGPNZ
 
 - nsgi- Nevada strategic growth initiative 
 - Ioneer 
