@@ -19,6 +19,6 @@ Megapolis Lithium Loop
 - department of war 
 - department of energy 
 - 
--
--
+- biz tokens 
+- https://share.gemini.google/H9yJUrpcAEPM
 
