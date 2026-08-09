@@ -21,4 +21,10 @@ Megapolis Lithium Loop
 - 
 - biz tokens 
 - https://share.gemini.google/H9yJUrpcAEPM
+-
+- leaf tech, Lithium energy alloy frequency 
+- resontech, resonance tech 
+- litial,Lithium multiplier alloy 
+- faetech, frequency alloy energy 
+- 
 
