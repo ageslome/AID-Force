@@ -30,7 +30,7 @@ Megapolis Lithium Loop https://share.gemini.google/EnSNcUZyGPNZ
 - crypto energy tokens https://share.gemini.google/iOeDIfDN2kUw
 -
 -How do Battery Management Systems (BMS) write dynamic State of Health (SoH) and operational data to the EU Battery Passport?
--
+-https://share.gemini.google/tGp19ew0Uak1
 -
 -
 
