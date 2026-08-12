@@ -27,4 +27,7 @@ Megapolis Lithium Loop https://share.gemini.google/EnSNcUZyGPNZ
 - litial,Lithium multiplier alloy 
 - faetech, frequency alloy energy 
 - 
+- crypto energy tokens https://share.gemini.google/iOeDIfDN2kUw
+-
+-
 
