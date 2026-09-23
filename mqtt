@@ -206,3 +206,16 @@ client.newWebSocketBuilder()
 listener)
 
 
+.thenAccept(webSocket -> {
+String topicPayload =
+"system/downtown/hospital-alpha/events/fire-alarm|{\"status\":\"active
+\"}";
+webSocket.sendText(topicPayload, true);
+System.out.println("Sent scope over WebSocket.");
+});
+try { Thread.sleep(3000); } catch (InterruptedException
+ignored) {}
+}
+}
+
+
