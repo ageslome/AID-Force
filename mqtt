@@ -1,0 +1,37 @@
+MQTT (Message Queuing Telemetry Transport) is a lightweight, publish-subscribe network
+protocol designed for resource-constrained devices and low-bandwidth, high-latency, or
+unreliable networks. It is a gold standard for IoT (Internet of Things) and machine-to-machine
+(M2M) communication.
+Core Concepts
+● Publish/Subscribe Architecture: Unlike traditional client-server models (like HTTP),
+MQTT decouples the sender of a message (publisher) from the receiver (subscriber)
+using a message broker.
+● The Broker: The central hub (e.g., Mosquitto, HiveMQ) that filters all incoming messages
+and distributes them to the correct subscribed clients.
+● Topics: UTF-8 strings used by the broker to filter messages for each connected client.
+Topics are structured hierarchically with slashes (e.g., home/livingroom/temperature).
+● Clients: Any device (from a microcontroller like an ESP32 to a cloud server) that runs an
+MQTT library and connects to the broker to publish or subscribe.
+Key Features
+● Lightweight & Efficient: Features a minimal header size (as small as 2 bytes),
+minimizing network traffic and conserving battery power on remote sensors.
+● Quality of Service (QoS): Offers three levels of delivery assurance:
+○ QoS 0 (At most once): Fire and forget (messages may be lost).
+○ QoS 1 (At least once): Guaranteed delivery, but duplicates may occur.
+○ QoS 2 (Exactly once): Guaranteed delivery with no duplicates (slowest).
+● Last Will and Testament (LWT): Allows a client to notify the broker beforehand of a
+pre-set message to broadcast automatically if the client disconnects unexpectedly.
+● Retained Messages: The broker can store the last message sent on a topic so that
+newly connected subscribers immediately receive the latest state without waiting for a
+new publish event.
+Common Use Cases
+● Smart Home Automation: Devices like lights, thermostats, and smart plugs
+communicating locally or via cloud hubs (e.g., Home Assistant).
+● Industrial IoT (IIoT): Monitoring heavy machinery performance, pipeline pressures, and
+factory floor telemetry.
+● Logistics & Tracking: Fleet management systems reporting real-time vehicle locations
+and cargo conditions.
+Would you like to see a practical code example of how a publisher and subscriber interact using
+MQTT?
+
+
