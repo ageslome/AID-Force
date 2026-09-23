@@ -78,3 +78,46 @@ clientWriters.add(out);
 
 
 
+System.out.println("[BROKER] New client connected: " +
+socket.getRemoteSocketAddress());
+String inputLine;
+while ((inputLine = in.readLine()) != null) {
+// Expected message format: TOPIC|PAYLOAD
+String[] parts = inputLine.split("\\|", 2);
+if (parts.length == 2) {
+String topic = parts[0];
+String payload = parts[1];
+System.out.println("[BROKER] Routing Topic: "
++ topic);
+broadcast(inputLine, out); // Broadcast to
+other clients
+}
+}
+} catch (IOException e) {
+System.out.println("[BROKER] Client disconnected.");
+} finally {
+if (out != null) {
+clientWriters.remove(out);
+}
+try {
+socket.close();
+} catch (IOException ignored) {}
+}
+}
+private void broadcast(String message, PrintWriter senderOut)
+{
+for (PrintWriter writer : clientWriters) {
+if (writer != senderOut) { // Echo to others
+writer.println(message);
+}
+}
+}
+}
+}
+2. The TCP Scope Client
+This client connects directly via standard sockets to publish events and listen for scoped
+updates matching your architecture.
+import java.io.*;
+import java.net.*;
+
+
