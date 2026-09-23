@@ -164,3 +164,45 @@ socket.close();
 } catch (Exception e) {
 
 
+e.printStackTrace();
+}
+}
+private static void parseScope(String topic, String payload) {
+System.out.println("\n[CLIENT RECEIVED]");
+System.out.println(" -> Full Topic: " + topic);
+System.out.println(" -> Payload: " + payload);
+String[] segments = topic.split("/");
+if (segments.length >= 6) {
+System.out.printf(" Parsed -> Area: %s | Structure: %s |
+Category: %s | ID: %s | Action: %s%n",
+segments[1], segments[2], segments[3],
+segments[4], segments[5]);
+}
+}
+}
+Alternative: Standard WebSockets (JDK 11+)
+If you prefer WebSockets over raw TCP, modern Java includes a native WebSocket client built
+right into the standard library (java.net.http.WebSocket), requiring zero dependencies:
+import java.net.URI;
+import java.net.http.HttpClient;
+import java.net.http.WebSocket;
+import java.util.concurrent.CompletionStage;
+public class ScopeWebSocketClient {
+public static void main(String[] args) {
+HttpClient client = HttpClient.newHttpClient();
+WebSocket.Listener listener = new WebSocket.Listener() {
+@Override
+public CompletionStage<?> onText(WebSocket webSocket,
+CharSequence data, boolean last) {
+System.out.println("Received WebSocket message: " +
+data);
+webSocket.request(1);
+return WebSocket.Listener.super.onText(webSocket,
+data, last);
+}
+};
+client.newWebSocketBuilder()
+.buildAsync(URI.create("ws://echo.websocket.events"),
+listener)
+
+
