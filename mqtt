@@ -34,4 +34,47 @@ and cargo conditions.
 Would you like to see a practical code example of how a publisher and subscriber interact using
 MQTT?
 
+Implementing a custom publish-subscribe messaging system using standard Java TCP
+sockets (java.net.*) allows you to build a lightweight, dependency-free broker and client
+architecture tailored specifically to your scope hierarchy
+(system/{area}/{structure}/{category}/{entityId}/{action}) without any third-party IoT bloat.
+1. The Lightweight TCP Scope Broker
+This server listens on a TCP port, accepts multiple client connections, and broadcasts
+messages formatted as TOPIC|PAYLOAD to all connected clients.
+import java.io.*;
+import java.net.*;
+import java.util.*;
+import java.util.concurrent.*;
+public class ScopeTcpBroker {
+private static final int PORT = 18883;
+private static final Set<PrintWriter> clientWriters =
+ConcurrentHashMap.newKeySet();
+public static void main(String[] args) {
+System.out.println("Starting Scope TCP Broker on port " + PORT
++ "...");
+try (ServerSocket serverSocket = new ServerSocket(PORT)) {
+while (true) {
+Socket socket = serverSocket.accept();
+new Thread(new ClientHandler(socket)).start();
+}
+} catch (IOException e) {
+e.printStackTrace();
+}
+}
+private static class ClientHandler implements Runnable {
+private final Socket socket;
+private PrintWriter out;
+public ClientHandler(Socket socket) {
+this.socket = socket;
+}
+@Override
+public void run() {
+try (
+BufferedReader in = new BufferedReader(new
+InputStreamReader(socket.getInputStream()))
+) {
+out = new PrintWriter(socket.getOutputStream(), true);
+clientWriters.add(out);
+
+
 
