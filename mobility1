@@ -1,0 +1,188 @@
+Mobility System Controller - com.aidforce.biogenesis
+This document contains the expanded Java implementation for the com.aidforce.biogenesis.locomotion framework, integrating multiple mobility categories (Walking, Jogging, Running, Sprinting) with adjustable speeds, metabolic cost tracking, proprioceptive feedback, and spinal reflex overrides.
+package com.aidforce.biogenesis.locomotion;
+
+import java.util.function.Consumer;
+
+/**
+ * Expands the Biogenesis locomotion engine to support multiple mobility categories:
+ * Walking, Jogging, Running, and Sprinting. Integrates dynamic speed scaling,
+ * energy/fatigue modeling, proprioceptive feedback, and low-latency spinal reflex arcs.
+ */
+public class MobilitySystemController {
+
+    // Mobility Categories with corresponding velocity scales (m/s) and metabolic multipliers
+    public enum MobilityCategory {
+        WALKING(1.2, 1.0, 0.80),
+        JOGGING(3.0, 2.2, 0.82),
+        RUNNING(5.5, 4.5, 0.85),
+        SPRINTING(9.0, 8.5, 0.90);
+
+        private final double targetVelocity;
+        private final double metabolicCostRate;
+        private final double reflexTensionCutoff;
+
+        MobilityCategory(double targetVelocity, double metabolicCostRate, double reflexTensionCutoff) {
+            this.targetVelocity = targetVelocity;
+            this.metabolicCostRate = metabolicCostRate;
+            this.reflexTensionCutoff = reflexTensionCutoff;
+        }
+
+        public double getTargetVelocity() { return targetVelocity; }
+        public double getMetabolicCostRate() { return metabolicCostRate; }
+        public double getReflexTensionCutoff() { return reflexTensionCutoff; }
+    }
+
+    private MobilityCategory currentCategory = MobilityCategory.WALKING;
+    private double currentMuscleTension = 0.3; 
+    private double currentJointAngle = 0.0;    
+    private double currentFatigueLevel = 0.0;  // 0.0 to 1.0 scale
+    private boolean isLocomoting = false;
+
+    // Specialized Proprioceptive Receptor Field for multi-speed mechanics
+    public static class ProprioceptiveReceptorField {
+        private final String receptorId;
+
+        public ProprioceptiveReceptorField(String receptorId) {
+            this.receptorId = receptorId;
+        }
+
+        public SpikeTrain transduceKinematics(double jointAngle, double tension, MobilityCategory category) {
+            boolean isNoxious = tension > category.getReflexTensionCutoff();
+            Long[] timestamps = {System.currentTimeMillis(), System.currentTimeMillis() + 5};
+            return new SpikeTrain(receptorId, timestamps, isNoxious, category);
+        }
+    }
+
+    public static class SpikeTrain {
+        private final String sourceId;
+        private final Long[] timestamps;
+        private final boolean isNoxious;
+        private final MobilityCategory category;
+
+        public SpikeTrain(String sourceId, Long[] timestamps, boolean isNoxious, MobilityCategory category) {
+            this.sourceId = sourceId;
+            this.timestamps = timestamps;
+            this.isNoxious = isNoxious;
+            this.category = category;
+        }
+
+        public String getSourceId() { return sourceId; }
+        public boolean isNoxious() { return isNoxious; }
+        public MobilityCategory getCategory() { return category; }
+    }
+
+    // Dynamic Spinal Reflex Arc adapting thresholds per mobility mode
+    private final SpinalReflexArc reflexArc = new SpinalReflexArc(
+        "LUMBAR_MOBILITY_SEGMENT",
+        (adjustment) -> {
+            this.currentMuscleTension += adjustment;
+            System.out.println("[GAIT EMERGENCY] Reflex override applied! Adjusted tension to: " + currentMuscleTension);
+        }
+    );
+
+    public static class SpinalReflexArc {
+        private final String segmentId;
+        private final Consumer<Double> motorOverrideCallback;
+
+        public SpinalReflexArc(String segmentId, Consumer<Double> motorOverrideCallback) {
+            this.segmentId = segmentId;
+            this.motorOverrideCallback = motorOverrideCallback;
+        }
+
+        public boolean evaluateReflex(SpikeTrain spikeTrain, double currentTension) {
+            if (spikeTrain.isNoxious() || currentTension >= spikeTrain.getCategory().getReflexTensionCutoff()) {
+                triggerProtectiveResponse(currentTension);
+                return true;
+            }
+            return false;
+        }
+
+        private void triggerProtectiveResponse(double tension) {
+            System.out.println("[SPINAL REFLEX TRIGGERED] Segment: " + segmentId + 
+                               " | Noxious Tension/Load: " + tension + 
+                               " | Executing rapid load shedding.");
+            double correctiveAction = -0.4 * tension;
+            motorOverrideCallback.accept(correctiveAction);
+        }
+    }
+
+    private final ProprioceptiveReceptorField legProprioceptor = new ProprioceptiveReceptorField("GMN_MOBILITY_RECEPTOR_01");
+
+    /**
+     * Executes a single locomotor step cycle based on the active mobility category.
+     */
+    public void executeLocomotionCycle(MobilityCategory category, double terrainResistance) {
+        this.currentCategory = category;
+        
+        // Compute tension increase scaled by velocity and fatigue
+        double baseEffort = category.getTargetVelocity() * 0.1;
+        this.currentMuscleTension = Math.min(1.0, baseEffort + terrainResistance + (currentFatigueLevel * 0.2));
+        this.currentJointAngle += (category.getTargetVelocity() * 5.0); // Stride scaling
+        
+        // Accumulate metabolic fatigue
+        this.currentFatigueLevel = Math.min(1.0, currentFatigueLevel + (0.02 * category.getMetabolicCostRate()));
+
+        System.out.println("\n--- Mobility Update [" + category.name() + "] ---");
+        System.out.println("Target Velocity: " + category.getTargetVelocity() + " m/s | Joint Angle: " + currentJointAngle + "°");
+        System.out.println("Muscle Tension: " + String.format("%.2f", currentMuscleTension) + " | Fatigue: " + String.format("%.2f", currentFatigueLevel));
+
+        // Transduce mechanical feedback
+        SpikeTrain proprioceptiveTrain = legProprioceptor.transduceKinematics(currentJointAngle, currentMuscleTension, category);
+
+        // Evaluate spinal reflex low-latency path
+        boolean reflexTriggered = reflexArc.evaluateReflex(proprioceptiveTrain, currentMuscleTension);
+        if (reflexTriggered) {
+            System.out.println("[PATHWAY] Reflex intercepted signal. Thalamic routing bypassed for rapid joint stabilization.");
+            // Force downward gait transition during emergency reflex
+            downgradeGait();
+        } else {
+            routeToThalamus(proprioceptiveTrain);
+        }
+    }
+
+    private void downgradeGait() {
+        if (currentCategory == MobilityCategory.SPRINTING) {
+            currentCategory = MobilityCategory.RUNNING;
+        } else if (currentCategory == MobilityCategory.RUNNING) {
+            currentCategory = MobilityCategory.JOGGING;
+        } else if (currentCategory == MobilityCategory.JOGGING) {
+            currentCategory = MobilityCategory.WALKING;
+        }
+        System.out.println("[GAIT SHIFT] Downgraded active mobility category to: " + currentCategory.name());
+    }
+
+    private void routeToThalamus(SpikeTrain train) {
+        System.out.println("[THALAMIC RELAY] Routing normal feedback for " + train.getCategory().name() + " to Somatosensory Cortex.");
+    }
+
+    public void startSimulationSequence() {
+        this.isLocomoting = true;
+        System.out.println("=== Biogenesis Multi-Speed Mobility Engine Initialized ===");
+
+        MobilityCategory[] testSequence = {
+            MobilityCategory.WALKING,
+            MobilityCategory.JOGGING,
+            MobilityCategory.RUNNING,
+            MobilityCategory.SPRINTING, // High velocity + resistance should trip reflex
+            MobilityCategory.WALKING
+        };
+
+        double[] terrainResistanceSequence = {0.1, 0.2, 0.4, 0.75, 0.05};
+
+        for (int i = 0; i < testSequence.length; i++) {
+            executeLocomotionCycle(testSequence[i], terrainResistanceSequence[i]);
+            try {
+                Thread.sleep(400);
+            } catch (InterruptedException e) {
+                Thread.currentThread().interrupt();
+            }
+        }
+    }
+
+    public static void main(String[] args) {
+        MobilitySystemController controller = new MobilitySystemController();
+        controller.startSimulationSequence();
+    }
+}
+
