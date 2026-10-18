@@ -1,3 +1,5 @@
+ "American Dream"—homeownership, disposable savings, and financial stability—feels increasingly out of reach for hospitality workers, teachers, retail staff, and service technicians. https://www.threads.com/share/BAb6ounNxl/
+
 LAMegapolis9.9 : living ai, energy, regeneration,  coinbase https://docs.google.com/document/d/1SPfWOJNN1YfsuturHzy1zFHPZn9rjeOG/edit?usp=drivesdk&ouid=115847503769872954151&rtpof=true&sd=true
 
 Megapolis Lithium Loop https://share.gemini.google/EnSNcUZyGPNZ
